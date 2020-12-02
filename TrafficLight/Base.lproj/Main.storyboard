@@ -41,6 +41,9 @@
                                 <state key="normal" title="START">
                                     <color key="titleColor" systemColor="systemGroupedBackgroundColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="makeButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5XF-aO-cTl"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Hn-tz-I9q">
                                 <rect key="frame" x="137" y="420" width="140" height="140"/>
@@ -68,10 +71,16 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LNa-3j-RVb" secondAttribute="trailing" constant="137" id="hst-VN-JFd"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="greenLightView" destination="9Hn-tz-I9q" id="8EJ-bT-Mya"/>
+                        <outlet property="redLightView" destination="LNa-3j-RVb" id="Yqv-Hl-9Jo"/>
+                        <outlet property="toggleButton" destination="cZQ-Hf-C2d" id="N4z-YG-1Au"/>
+                        <outlet property="yellowLightView" destination="1On-i5-2x1" id="J0s-Or-fWi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="203" y="-347"/>
+            <point key="canvasLocation" x="833" y="-440"/>
         </scene>
     </scenes>
     <resources>
