@@ -7,49 +7,61 @@
 
 import UIKit
 
+enum CurrentLight {
+    case red, yellow, green
+}
+
 class ViewController: UIViewController {
     @IBOutlet var redLightView: UIView!
     @IBOutlet var yellowLightView: UIView!
     @IBOutlet var greenLightView: UIView!
+    
     @IBOutlet var toggleButton: UIButton!
     
+    private var currentLight = CurrentLight.red
+    private let lightIsOn: CGFloat = 1
+    private let lightIsOff: CGFloat = 0.3
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        redLightView.alpha = 0.3
-        redLightView.layer.cornerRadius = 70
-        
-        yellowLightView.alpha = 0.3
-        yellowLightView.layer.cornerRadius = 70
-        
-        greenLightView.alpha = 0.3
-        greenLightView.layer.cornerRadius = 70
-        
         toggleButton.layer.cornerRadius = 10
         
+        redLightView.alpha = lightIsOff
+        yellowLightView.alpha = lightIsOff
+        greenLightView.alpha = lightIsOff
         
-        
-        
-        
-        // Do any additional setup after loading the view.
     }
 
-    @IBAction func makeButtonAction(_ sender: Any) {
-        redLightView.isHidden = true
-        yellowLightView.isHidden = true
-        greenLightView.isHidden = true
+    override func viewWillLayoutSubviews() {
+        redLightView.layer.cornerRadius = redLightView.frame.width / 2
+        yellowLightView.layer.cornerRadius = redLightView.frame.width / 2
+        greenLightView.layer.cornerRadius = redLightView.frame.width / 2
+    }
     
-        if redLightView.isHidden {
-            redLightView.isHidden = false
-            yellowLightView.isHidden = false
-            greenLightView.isHidden = false
-            redLightView.alpha = 1
-            yellowLightView.alpha = 1
-            greenLightView.alpha = 1
-            toggleButton.setTitle("NEXT", for: .normal)
+    
+    
+    @IBAction func makeButtonAction(_ sender: Any) {
+        
+        toggleButton.setTitle("NEXT", for: .normal)
+        
+        switch currentLight {
+        case .red:
+            greenLightView.alpha = lightIsOff
+            redLightView.alpha = lightIsOn
+            currentLight = .yellow
+        case .yellow:
+            redLightView.alpha = lightIsOff
+            yellowLightView.alpha = lightIsOn
+            currentLight = .green
+        case .green:
+            greenLightView.alpha = lightIsOn
+            yellowLightView.alpha = lightIsOff
+            currentLight = .red
+        
         }
        
+        
     
     
     }
